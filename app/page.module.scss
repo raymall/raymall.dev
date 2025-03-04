@@ -7,9 +7,11 @@
   --button-secondary-hover: #f2f2f2;
 
   min-height: 100svh;
-  padding: 80px;
-  font-family: var(--font-geist-sans);
-  // font-family: var(--font-geist-mono);
+  padding: 2.5rem;
+  
+  @media screen and (min-width: 64rem) {
+    padding: 5rem;
+  }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -31,7 +33,7 @@
 }
 
 .main {
-  margin-top: 0.75rem;
+  margin-top: 0.5rem;
 }
 
 .nav {
@@ -41,38 +43,47 @@
 
   &_items {
     list-style: none;
-
-    & > .nav_item {
-      transition: opacity 0.25s, translate 0.25s, scale 0.25s;
-    }
-
-    &:has(> .nav_item:hover) > .nav_item:not(:hover),
-    &:has(> .nav_item:focus-within) > .nav_item:not(:focus-within) {
-      opacity: 0.5;
-
-      & > .nav_link {
-        transform-origin: left center;
-        scale: 0.95;
+    
+    @media (hover: hover) and (pointer: fine) {
+      &:has(> .nav_item:hover) > .nav_item:not(:hover),
+      &:has(> .nav_item:focus-within) > .nav_item:not(:focus-within) {
+        opacity: 0.5;
+  
+        & > .nav_link {
+          scale: 0.95;
+        }
       }
     }
   }
 
   &_item {
     display: block;
+    transition: opacity 0.25s;
+
+    @media (hover: hover) and (pointer: fine) {
+      &:hover,
+      &:focus-within {
+        & > .nav_link {
+          scale: 1.15;
+        }
+      }
+    }
   }
 
   &_link {
     display: inline-block;
+    transform-origin: left center;
     width: 100%;
     padding: 0.5rem 0;
-    color: rgb(29 78 216);
+    color: var(--link);
     text-decoration-line: underline;
     text-underline-offset: 0.25rem;
+    transition: scale 0.25s;
   }
 }
 
 .footer {
-  margin-top: 1rem;
+  margin-top: 2rem;
 
   &_nav {
     font-size: 0.75rem;
@@ -93,15 +104,19 @@
         padding-left: 0;
       }
     }
-  }
-}
 
-/* Enable hover only on non-touch devices */
-@media (hover: hover) and (pointer: fine) {
-}
+    &_link {
+      display: inline-block;
+      transform-origin: center center;
+      transition: scale 0.25s;
+      color: var(--foreground);
 
-@media (prefers-color-scheme: dark) {
-  .logo {
-    filter: invert(1);
+      @media (hover: hover) and (pointer: fine) {
+        &:hover,
+        &:focus-within {
+          scale: 1.15;
+        }
+      }
+    }
   }
 }

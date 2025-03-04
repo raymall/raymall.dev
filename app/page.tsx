@@ -32,6 +32,14 @@ const menu = {
     {
       label: 'instagram',
       href: 'https://www.instagram.com/raymallperez/',
+    },
+    {
+      label: '/',
+      href: null,
+    },
+    {
+      label: 'email',
+      href: 'mailto:raymall.perez@gmail.com',
     }
   ]
 }
