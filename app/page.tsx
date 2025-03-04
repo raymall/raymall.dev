@@ -1,94 +1,95 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import styles from './page.module.scss'
+import SplitText from './components/SplitText'
+
+const navigation_data = [
+  {
+    label: 'vw.calc()',
+    href: 'https://github.com/raymall/vw-calc',
+  },
+  {
+    label: '[auth-starter]',
+    href: 'https://github.com/raymall/auth-starter',
+  },
+  {
+    label: 'Activity Aggregator',
+    href: 'https://github.com/raymall/activity-aggregator',
+  },
+  {
+    label: 'Shopify Status Checker',
+    href: 'https://github.com/raymall/shopify-status-checker',
+  },
+]
+
+const footer_navigation_data = [
+  {
+    label: 'github',
+    href: 'https://github.com/raymall',
+  },
+  {
+    label: '/',
+    href: null,
+  },
+  {
+    label: 'instagram',
+    href: 'https://www.instagram.com/raymallperez/',
+  },
+]
 
 export default function Home() {
   return (
     <div className={styles.page}>
+      <h1 className={styles.title}>{``}</h1>
+      <SplitText
+        text='ray.dev'
+        className={styles.title}
+        delay={100}
+        animationFrom={{ opacity: 0, transform: 'translate3d(0, 50px, 0)' }}
+        animationTo={{ opacity: 1, transform: 'translate3d(0, 0, 0)' }}
+        // easing="easeOutCubic"
+        threshold={0.2}
+        rootMargin='-50px'
+      />
+      
       <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>app/page.tsx</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
-        </div>
+        <nav className={styles.nav}>
+          <ul className={styles.nav_items}>
+            {navigation_data.length && navigation_data.map((item, index) => (
+              <li key={index} className={styles.nav_item}>
+                <a
+                  className={styles.nav_link}
+                  target='_blank'
+                  href={item.href}
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
       </main>
+      
       <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+        <nav className={styles.footer_nav}>
+          <ul className={styles.footer_nav_items}>
+            {footer_navigation_data.length && footer_navigation_data.map((item, index) => (
+              <li key={index} className={styles.footer_nav_item}>
+                {item.href ? (
+                  <a
+                    className={styles.footer_nav_link}
+                    target='_blank'
+                    href={item.href}
+                  >
+                    {item.label}
+                  </a>
+                ): (
+                  <span className={styles.footer_nav_divider}>
+                    {item.label}
+                  </span>
+                )}
+              </li>
+            ))}
+          </ul>
+        </nav>
       </footer>
     </div>
   );

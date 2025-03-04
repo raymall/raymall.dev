@@ -1,0 +1,107 @@
+.page {
+  --gray-rgb: 0, 0, 0;
+  --gray-alpha-200: rgba(var(--gray-rgb), 0.08);
+  --gray-alpha-100: rgba(var(--gray-rgb), 0.05);
+
+  --button-primary-hover: #383838;
+  --button-secondary-hover: #f2f2f2;
+
+  min-height: 100svh;
+  padding: 80px;
+  font-family: var(--font-geist-sans);
+  // font-family: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  .page {
+    --gray-rgb: 255, 255, 255;
+    --gray-alpha-200: rgba(var(--gray-rgb), 0.145);
+    --gray-alpha-100: rgba(var(--gray-rgb), 0.06);
+
+    --button-primary-hover: #ccc;
+    --button-secondary-hover: #1a1a1a;
+  }
+}
+
+.title {
+  font-family: 'Teko', Arial, Helvetica, sans-serif;
+  font-size: 2rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.main {
+  margin-top: 0.75rem;
+}
+
+.nav {
+  width: max-content;
+  font-size: 0.875rem;
+  font-weight: 500;
+
+  &_items {
+    list-style: none;
+
+    & > .nav_item {
+      transition: opacity 0.25s, translate 0.25s, scale 0.25s;
+    }
+
+    &:has(> .nav_item:hover) > .nav_item:not(:hover),
+    &:has(> .nav_item:focus-within) > .nav_item:not(:focus-within) {
+      opacity: 0.5;
+
+      & > .nav_link {
+        transform-origin: left center;
+        scale: 0.95;
+      }
+    }
+  }
+
+  &_item {
+    display: block;
+  }
+
+  &_link {
+    display: inline-block;
+    width: 100%;
+    padding: 0.5rem 0;
+    color: rgb(29 78 216);
+    text-decoration-line: underline;
+    text-underline-offset: 0.25rem;
+  }
+}
+
+.footer {
+  margin-top: 1rem;
+
+  &_nav {
+    font-size: 0.75rem;
+    font-weight: 400;
+
+    &_items {
+      display: flex;
+      flex-flow: row nowrap;
+      align-items: center;
+      justify-content: flex-start;
+      list-style: none;
+    }
+
+    &_item {
+      padding: 0 1rem 0 0;
+
+      &:last-child {
+        padding-left: 0;
+      }
+    }
+  }
+}
+
+/* Enable hover only on non-touch devices */
+@media (hover: hover) and (pointer: fine) {
+}
+
+@media (prefers-color-scheme: dark) {
+  .logo {
+    filter: invert(1);
+  }
+}
