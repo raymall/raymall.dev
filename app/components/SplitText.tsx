@@ -3,17 +3,25 @@
 import { useSprings, animated } from '@react-spring/web'
 import { useEffect, useRef, useState } from 'react'
 
+type AnimatedSpanExtendedProps = React.ComponentProps<typeof animated.span> & {
+  children?: React.ReactNode
+}
+
 interface SplitTextProps {
-    text?: string
-    className?: string
-    delay?: number
-    animationFrom?: { opacity: number; transform: string }
-    animationTo?: { opacity: number; transform: string }
-    easing?: (t: number) => number
-    threshold?: number
-    rootMargin?: string
-    textAlign?: 'left' | 'right' | 'center' | 'justify' | 'initial' | 'inherit'
-    onLetterAnimationComplete?: () => void
+  text?: string
+  className?: string
+  delay?: number
+  animationFrom?: { opacity: number; transform: string }
+  animationTo?: { opacity: number; transform: string }
+  easing?: (t: number) => number
+  threshold?: number
+  rootMargin?: string
+  textAlign?: 'left' | 'right' | 'center' | 'justify' | 'initial' | 'inherit'
+  onLetterAnimationComplete?: () => void
+}
+
+const AnimatedSpan: React.FC<AnimatedSpanExtendedProps> = ({ children, ...props }) => {
+  return <animated.span {...props}>{children}</animated.span>
 }
 
 const SplitText: React.FC<SplitTextProps> = ({
@@ -74,9 +82,9 @@ const SplitText: React.FC<SplitTextProps> = ({
 
     return (
         <p
-            ref={ref}
-            className={`split-parent ${className}`}
-            style={{ textAlign, overflow: 'hidden', display: 'inline', whiteSpace: 'normal', wordWrap: 'break-word' }}
+          ref={ref}
+          className={`split-parent ${className}`}
+          style={{ textAlign, overflow: 'hidden', display: 'inline', whiteSpace: 'normal', wordWrap: 'break-word' }}
         >
             {words.map((word, wordIndex) => (
                 <span key={wordIndex} style={{ display: 'inline-block', whiteSpace: 'nowrap' }}>
@@ -86,16 +94,16 @@ const SplitText: React.FC<SplitTextProps> = ({
                             .reduce((acc, w) => acc + w.length, 0) + letterIndex
 
                         return (
-                            <animated.span
-                                key={index}
-                                style={{
-                                    ...springs[index],
-                                    display: 'inline-block',
-                                    willChange: 'transform, opacity',
-                                }}
+                            <AnimatedSpan
+                              key={index}
+                              style={{
+                                ...springs[index],
+                                display: 'inline-block',
+                                willChange: 'transform, opacity',
+                              }}
                             >
-                                {letter}
-                            </animated.span>
+                              {letter}
+                            </AnimatedSpan>
                         )
                     })}
                     <span style={{ display: 'inline-block', width: '0.3em' }}>&nbsp;</span>
