@@ -4,12 +4,12 @@ import './globals.scss'
 export const metadata: Metadata = {
   title: 'raymall.dev',
   description: '',
-};
+}
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
   return (
     <html lang="en">
@@ -17,5 +17,5 @@ export default function RootLayout({
         {children}
       </body>
     </html>
-  );
+  )
 }

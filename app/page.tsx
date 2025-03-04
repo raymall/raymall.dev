@@ -1,5 +1,5 @@
 import styles from './page.module.scss'
-import SplitText from './components/SplitText'
+import SplitText from '@/app/components/SplitText'
 
 const menu = {
   main: [
@@ -38,8 +38,24 @@ const menu = {
       href: null,
     },
     {
+      label: 'linkedin',
+      href: 'https://www.linkedin.com/in/raymall/',
+    },
+    {
+      label: '/',
+      href: null,
+    },
+    {
       label: 'email',
       href: 'mailto:raymall.perez@gmail.com',
+    },
+    {
+      label: '/',
+      href: null,
+    },
+    {
+      label: 'resume',
+      href: '/RAYMALL PEREZ - RESUME - EN.pdf',
     }
   ]
 }
@@ -83,23 +99,23 @@ export default function Home() {
             {menu.footer.length && menu.footer.map((item, index) => (
               <li key={index} className={styles.footer_nav_item}>
                 {item.href ? (
-                  <a
-                    className={styles.footer_nav_link}
-                    target='_blank'
-                    href={item.href}
-                  >
-                    {item.label}
-                  </a>
-                ): (
-                  <span className={styles.footer_nav_divider}>
-                    {item.label}
-                  </span>
-                )}
+                    <a
+                      className={styles.footer_nav_link}
+                      target='_blank'
+                      href={item.href}
+                    >
+                      {item.label}
+                    </a>
+                  ): (
+                    <span className={styles.footer_nav_divider}>
+                      {item.label}
+                    </span>
+                  )}
               </li>
             ))}
           </ul>
         </nav>
       </footer>
     </div>
-  );
+  )
 }
