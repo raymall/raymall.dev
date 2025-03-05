@@ -46,16 +46,8 @@ const menu = {
       href: null,
     },
     {
-      label: 'email',
-      href: 'mailto:raymall.perez@gmail.com',
-    },
-    {
-      label: '/',
-      href: null,
-    },
-    {
       label: 'resume',
-      href: '/RAYMALL PEREZ - RESUME - EN.pdf',
+      href: '/RAYMALL_RESUME_EN.pdf',
     }
   ]
 }
