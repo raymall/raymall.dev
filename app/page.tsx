@@ -4,10 +4,6 @@ import SplitText from '@/app/components/SplitText'
 const menu = {
   main: [
     {
-      label: '[auth-starter]',
-      href: 'https://github.com/raymall/auth-starter',
-    },
-    {
       label: 'Activity Aggregator',
       href: 'https://github.com/raymall/activity-aggregator',
     },
@@ -41,14 +37,14 @@ const menu = {
       label: 'linkedin',
       href: 'https://www.linkedin.com/in/raymall/',
     },
-    {
-      label: '/',
-      href: null,
-    },
-    {
-      label: 'resume',
-      href: '/RAYMALL_RESUME_EN.pdf',
-    }
+    // {
+    //   label: '/',
+    //   href: null,
+    // },
+    // {
+    //   label: 'resume',
+    //   href: '/RAYMALL_RESUME_EN.pdf',
+    // }
   ]
 }
 
